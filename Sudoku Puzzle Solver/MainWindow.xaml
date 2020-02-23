@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku_Puzzle_Solver"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="750" ResizeMode="NoResize">
+        Title="Sudoku Solver" Height="800" Width="750" ResizeMode="NoResize" Background="#AAAAAA">
 
     <StackPanel Orientation = "Vertical">
 
-        <Grid x:Name = "sudokuGrid" Height = "700" Width = "700">
+        <Grid x:Name = "sudokuGrid" Height = "700" Width = "700" Margin = "0, 20, 0, 0">
 
             <Grid.RowDefinitions>
 
@@ -142,23 +142,23 @@
 
         </Grid>
 
-        <Button x:Name="SolveButton" Click="SolveButton_Click" Content="Solve!" Width = "100" Margin="0,20,0,0"/>
+        <Button x:Name="SolveButton" Click="SolveButton_Click" Content="Solve!" Width = "100" Margin="0,10,0,0"/>
 
         <StackPanel Orientation="Horizontal">
 
             <!-- Left Vertical Line-->
-            <Line X1="250" Y1="-740" X2="250" Y2="-40" StrokeThickness="9" Stroke="Black" Fill="Black" RenderTransformOrigin="0.5,0.5" />
+            <Line X1="250" Y1="-730" X2="250" Y2="-30" StrokeThickness="9" Stroke="Black" Fill="Black" RenderTransformOrigin="0.5,0.5" />
 
             <!-- Right Vertical Line-->
-            <Line X1="233" Y1="-740" X2="233" Y2="-40" StrokeThickness="9" Stroke="Black" Fill="Black" RenderTransformOrigin="0.5,0.5" />
+            <Line X1="233" Y1="-730" X2="233" Y2="-30" StrokeThickness="9" Stroke="Black" Fill="Black" RenderTransformOrigin="0.5,0.5" />
 
         </StackPanel>
 
         <!-- Top Horizontal Line-->
-        <Line X1="17" Y1="-507" X2="716" Y2="-507" StrokeThickness="9" Stroke="Black" Fill="Black" RenderTransformOrigin="0.5,0.5" />
+        <Line X1="17" Y1="-497" X2="716" Y2="-497" StrokeThickness="9" Stroke="Black" Fill="Black" RenderTransformOrigin="0.5,0.5" />
 
         <!-- Bottom Horizontal Line-->
-        <Line X1="17" Y1="-274" X2="716" Y2="-274" StrokeThickness="9" Stroke="Black" Fill="Black" RenderTransformOrigin="0.5,0.5" />
+        <Line X1="17" Y1="-264" X2="716" Y2="-264" StrokeThickness="9" Stroke="Black" Fill="Black" RenderTransformOrigin="0.5,0.5" />
 
     </StackPanel>
 

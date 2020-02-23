@@ -18,8 +18,9 @@ namespace Sudoku_Puzzle_Solver
 
         private void SolveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsUserInputValid())
+            if (DoesUserInputContainANonNumericValue())
             {
+                MessageBox.Show("ERROR, the entered puzzle contains a NON-NUMERIC value!");
                 return;
             }
             int [,] userEnteredSudokuPuzzle = ExtractUserEnteredSudokuPuzzle();
@@ -28,33 +29,31 @@ namespace Sudoku_Puzzle_Solver
                 MessageBox.Show("ERROR, the entered puzzle is NOT a valid puzzle!");
                 return;
             }
-            //int [,] userEnteredSudokuPuzzle = TestSudokuPuzzles.SetUpTestPuzzle1();
-            //int [,] userEnteredSudokuPuzzle = TestSudokuPuzzles.SetUpTestPuzzle2();
-            //int [,] userEnteredSudokuPuzzle = TestSudokuPuzzles.SetUpTestPuzzle3();
             SolveSudokuPuzzle.SolvePuzzleWithBacktrackingAlgorithm(userEnteredSudokuPuzzle);
             DisplaySolvedSudokuPuzzle(userEnteredSudokuPuzzle);
         }
 
 
-        private bool IsUserInputValid()
+        private bool DoesUserInputContainANonNumericValue()
         {
             UIElementCollection displayedTextBoxes = sudokuGrid.Children;
             int currentTextBoxNumber = 0;
             foreach (TextBox currentTextBox in displayedTextBoxes)
             {
-                if (currentTextBox.Text.Length == 0)
-                {
-                    ++currentTextBoxNumber;
-                    continue;
-                }
-                if (!char.IsDigit(currentTextBox.Text[0]))
-                {
-                    MessageBox.Show("ERROR, the entered puzzle contains a non numeric value!");
-                    return false;
-                }
+                if (!IsThisTextBoxEmptyOrDoesItOnlyContainANumber(currentTextBox))
+                    return true;
                 ++currentTextBoxNumber;
             }
-            return true;
+            return false;
+        }
+
+
+        private bool IsThisTextBoxEmptyOrDoesItOnlyContainANumber(TextBox currentTextBox)
+        {
+            if (currentTextBox.Text.Length == 0)
+                return true;
+            char charInCurrentTextBox = currentTextBox.Text [0];
+            return char.IsDigit(charInCurrentTextBox);
         }
 
 
@@ -67,7 +66,7 @@ namespace Sudoku_Puzzle_Solver
             {
                 int currentTextBoxRow = CalculateTextBoxRowLocation(currentTextBoxNumber);
                 int currentTextBoxColumn = CalculateColumnLocation(currentTextBoxNumber);
-                userEnteredSudokuPuzzle[currentTextBoxRow, currentTextBoxColumn] = ExtractEnteredNumberFromTextBox(currentTextBox);
+                userEnteredSudokuPuzzle [currentTextBoxRow, currentTextBoxColumn] = ExtractEnteredNumberFromTextBox(currentTextBox);
                 ++currentTextBoxNumber;
             }
             return userEnteredSudokuPuzzle;
@@ -89,9 +88,7 @@ namespace Sudoku_Puzzle_Solver
         private int ExtractEnteredNumberFromTextBox(TextBox currentTextBox)
         {
             if (string.IsNullOrEmpty(currentTextBox.Text))
-            {
                 return 0;
-            }
             return currentTextBox.Text[0] - '0';
         }
 

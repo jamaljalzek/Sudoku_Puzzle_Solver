@@ -18,11 +18,9 @@ namespace Sudoku_Puzzle_Solver.ProgramLogic
             {
                 for (int currentColumn = 0; currentColumn < 9; ++currentColumn)
                 {
-                    int digitAtCurrentSpot = userEnteredSudokuPuzzle[currentRow, currentColumn];
-                    if (digitAtCurrentSpot != 0 && !CheckValidity.IsThisDigitInAValidLocation(currentRow, currentColumn, digitAtCurrentSpot))
-                    {
+                    int digitAtCurrentSpot = userEnteredSudokuPuzzle [currentRow, currentColumn];
+                    if (digitAtCurrentSpot != 0 && !IsThisDigitInAValidLocation(currentRow, currentColumn, digitAtCurrentSpot))
                         return false;
-                    }
                 }
             }
             return true;
@@ -44,9 +42,7 @@ namespace Sudoku_Puzzle_Solver.ProgramLogic
             {
                 int currentDigitBeingChecked = userEnteredSudokuPuzzle [currentDigitRowLocation, currentColumnBeingChecked];
                 if (currentDigitBeingChecked == currentDigit && currentColumnBeingChecked != currentDigitColumnLocation)
-                {
                     return false;
-                }
             }
             return true;
         }
@@ -58,9 +54,7 @@ namespace Sudoku_Puzzle_Solver.ProgramLogic
             {
                 int currentDigitBeingChecked = userEnteredSudokuPuzzle [currentRowBeingChecked, currentDigitColumnLocation];
                 if (currentDigitBeingChecked == currentDigit && currentRowBeingChecked != currentDigitRowLocation)
-                {
                     return false;
-                }
             }
             return true;
         }
@@ -76,9 +70,7 @@ namespace Sudoku_Puzzle_Solver.ProgramLogic
                 {
                     int currentDigitBeingChecked = userEnteredSudokuPuzzle [currentRowBeingChecked, currentColumnBeingChecked];
                     if (currentDigitBeingChecked == currentDigit && currentRowBeingChecked != currentDigitRowLocation && currentColumnBeingChecked != currentDigitColumnLocation)
-                    {
                         return false;
-                    }
                 }
             }
             return true;
