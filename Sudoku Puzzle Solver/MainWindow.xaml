@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku_Puzzle_Solver"
         mc:Ignorable="d"
-        Title="Sudoku Solver" Height="800" Width="750" ResizeMode="NoResize" Background="#AAAAAA">
+        Title="Sudoku Solver" Height="800" Width="750" ResizeMode="NoResize" Background="#AAAAAA" WindowStartupLocation="CenterScreen">
 
     <StackPanel Orientation = "Vertical">
 
